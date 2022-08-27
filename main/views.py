@@ -4,6 +4,13 @@ from main.models import Brand, Pincode, Product, ProductInstance, OrderDetail, U
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+import datetime
+from django.shortcuts import render, get_object_or_404,redirect
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+
+from main.forms import OrderForm
+
 
 def index(request):
     num_products = Product.objects.all().count()
@@ -41,12 +48,6 @@ class BookCreate(CreateView):
     fields = '__all__'
 
 
-import datetime
-from django.shortcuts import render, get_object_or_404,redirect
-from django.http import HttpResponseRedirect
-from django.urls import reverse
-
-from main.forms import OrderForm
 
 def order_item(request, pk):
     product_instance = get_object_or_404(ProductInstance, pk=pk)
