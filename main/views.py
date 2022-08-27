@@ -11,6 +11,7 @@ from django.urls import reverse
 
 from main.forms import OrderForm
 
+# test braches is working in  git
 
 def index(request):
     num_products = Product.objects.all().count()
